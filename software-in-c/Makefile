@@ -1,15 +1,18 @@
+BUILD_DIR = ./build
+
+all: funcptr macro-fast macro-slow
+
 funcptr: obj
-	gcc fib.o -o fib main.c
+	gcc $(BUILD_DIR)/fib.o -o $(BUILD_DIR)/$@ main.c
 
 macro-fast: obj
-	gcc fib.o -DMACRO_FAST -o fib main.c
+	gcc $(BUILD_DIR)/fib.o -DMACRO_FAST -o $(BUILD_DIR)/$@ main.c
 
 macro-slow: obj
-	gcc fib.o -DMACRO_SLOW -o fib main.c
+	gcc $(BUILD_DIR)/fib.o -DMACRO_SLOW -o $(BUILD_DIR)/$@ main.c
 
 obj:
-	gcc fib.c -c
+	gcc fib.c -c -o $(BUILD_DIR)/fib.o
 
 clean:
-	rm -f *.o
-	rm -f fib
+	rm -f $(BUILD_DIR)/*
