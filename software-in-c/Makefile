@@ -12,6 +12,7 @@ macro-slow: obj
 	gcc $(BUILD_DIR)/fib.o -DMACRO_SLOW -o $(BUILD_DIR)/$@ main.c
 
 obj:
+	mkdir -p $(BUILD_DIR)
 	gcc fib.c -c -o $(BUILD_DIR)/fib.o
 
 clean:
